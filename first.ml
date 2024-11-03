@@ -8,8 +8,8 @@ let rec d_dx ds =
   |Point(x, y)::[] -> None
   |Point(x1, y1)::Point(x2, y2)::t ->
       match d_dx (Point(x2, y2)::t) with
-      |None -> Some([Point((y2-.y1)/.(x2-.x1), y2)])
-      |Some(v) -> Some(Point((y2-.y1)/.(x2-.x1), y2)::v)
+      |None -> Some([Point(x2, (y2-.y1)/.(x2-.x1))])
+      |Some(v) -> Some(Point(x2, (y2-.y1)/.(x2-.x1))::v)
 ;;
 
 let rec write_to_csv ds x_name y_name =
